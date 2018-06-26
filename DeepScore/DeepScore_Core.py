@@ -88,7 +88,7 @@ def train_model():
     test_X = X[1500:1700,:]
     test_Y = Y[1500:1700,]
 
-    print train_X.shape, train_Y.shape, test_X.shape, test_Y.shape
+    print(train_X.shape, train_Y.shape, test_X.shape, test_Y.shape)
     model = Sequential()
     model.add(Dense(12, input_dim=300, activation='relu'))
     model.add(Dense(8, activation='tanh'))
@@ -168,10 +168,10 @@ def testModel(model_fn=None):
     actual_scores = np.array(actual_scores)
 
     rmse = getRMSE(predicted_scores, actual_scores)
-    print "RMSE is : ", rmse
+    print("RMSE is : ", rmse)
     # print predicted_scores.shape
     # print actual_scores.shape
-    print accuracy_score(actual_scores, predicted_scores)
+    print(accuracy_score(actual_scores, predicted_scores))
     print(classification_report(actual_scores, predicted_scores))
     # print predicted_scores
     # print actual_scores
