@@ -17,13 +17,10 @@ import numpy as np
 # fix random seed for reproducibility
 import pickle
 
-
-
 def encodeOneHot(score):
     onehot_y = [0] * 13
     onehot_y[int(score)] = 1
     return np.array(onehot_y)
-
 
 def preprocessEssayText(_LOGFILENAME, essay_filename):
     EventIssuer.issueMessage("Loading local dictionary : w2v_dict_final_1492930578.7.dsd", _LOGFILENAME)
@@ -193,7 +190,7 @@ def optimize_elbow(data, icn, visualize=False):
                     data_point = data[data_point_index]
                     for findex in xrange(len(data_point)):
                         sum_sq_error += math.pow(data_point[findex]-cluster_mean[findex], 2)
-            print "SSE at", str(num_clusters), "=", str(sum_sq_error)
+            print("SSE at", str(num_clusters), "=", str(sum_sq_error))
 
             #PLOT / UPDATE THE PLOT FOR SSE
             sse_list.append(sum_sq_error)
@@ -225,14 +222,12 @@ def generate_stratified_samples(data_x, data_y, fraction):
     for cluster_label in clusters:
         sampled_dict_indices = np.random.randint(len(clusters[cluster_label]), size=int(len(clusters[cluster_label]) * fraction))
         sampled_indices = np.array(clusters[cluster_label])[sampled_dict_indices]
-        print "In Cluster", str(cluster_label), ": Total : ", str(len(clusters[cluster_label])), "| Sampled : ", str(len(sampled_indices))
+        print("In Cluster", str(cluster_label), ": Total : ", str(len(clusters[cluster_label])), "| Sampled : ", str(len(sampled_indices)))
         stratified_samples[cluster_label] = data_x[sampled_indices]
     return stratified_samples
 
 
-def stratifiedPartition(alldata_X, alldata_Y, _FRACTION):
-
-
+#def stratifiedPartition(alldata_X, alldata_Y, _FRACTION):
 
 def partitionDataset(X, Y):
     trainX, trainY, testX, testY = randPartition(X, Y, 0.90)

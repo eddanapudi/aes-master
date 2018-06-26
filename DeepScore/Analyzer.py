@@ -25,7 +25,7 @@ class AnalyzerObject:
         self.dev_loss, self.dev_metric = self.model.evaluate(self.dev_X, self.dev_Y, batch_size=self.batch_size, verbose=1)
         dev_pred = self.model.predict(self.dev_X, batch_size=self.batch_size).squeeze()
         self.qwk, self.lwk = calculate_kappa(self.dev_Y, dev_pred)
-        print ""
+        print("")
         EventIssuer.issueMessage("[VALIDATION] : QWK : " + str(self.qwk) + " | LWK : " + str(self.lwk), self.log_fn)
 
 
